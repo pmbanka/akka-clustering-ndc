@@ -1,0 +1,25 @@
+version 5.153.0
+
+redirects: on
+
+source https://nuget.org/api/v2
+framework: net461
+
+nuget Akka = 1.3.6
+nuget Akka.Logger.Serilog
+nuget Akka.Persistence.Query.Sql
+nuget Akka.Persistence.Sql.Common
+nuget Akka.Persistence.SqlServer
+nuget Akka.Remote
+nuget Akkling = 0.9.1
+nuget Akkling.Cluster.Sharding = 0.9.1
+nuget Akkling.Persistence = 0.9.1
+nuget Akkling.Streams = 0.9.1
+nuget Akkling.TestKit = 0.8.0 // use 0.9.1 when available 
+nuget DotNetty.Common = 0.4.6 // https://github.com/Azure/DotNetty/issues/360
+nuget FSharp.Compiler.Tools 10.0.1
+nuget FSharp.Core 4.3.4
+nuget Microsoft.Extensions.Logging ~> 1
+nuget Microsoft.Extensions.Logging.Abstractions ~> 1
+nuget Petabridge.Cmd.Host
+nuget Petabridge.Cmd.Cluster
