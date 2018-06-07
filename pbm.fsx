@@ -10,7 +10,6 @@ open Petabridge.Cmd.Cluster
 let configWithPort (port:int) =
     let config = Configuration.parse ("""
         akka {
-          # loglevel = DEBUG
           actor {
             provider = cluster
           }
@@ -35,4 +34,4 @@ let cmd = PetabridgeCmd.Get(system1)
 cmd.RegisterCommandPalette(ClusterCommands.Instance)
 cmd.Start()
 
-let system2 = System.create "cluster-system" (configWithPort 5001)
+let _system2 = System.create "cluster-system" (configWithPort 5001)

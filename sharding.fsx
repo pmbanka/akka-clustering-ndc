@@ -23,8 +23,8 @@ let configWithPort (port:int) =
           cluster {
             roles = ["Worker"]
             sharding {
-               journal-plugin-id = "akka.persistence.journal.inmem"
-               snapshot-plugin-id = "akka.persistence.snapshot-store.local"
+                journal-plugin-id = "akka.persistence.journal.inmem"
+                snapshot-plugin-id = "akka.persistence.snapshot-store.inmem"
             }
             seed-nodes = [ "akka.tcp://cluster-system@localhost:5000" ]
           }

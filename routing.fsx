@@ -41,9 +41,8 @@ let configWithPort (port:int) (role:string) =
     config.WithFallback(ClusterSingletonManager.DefaultConfig())
 
 let dispatcher = System.create "cluster-system" (configWithPort 5000 "dispatcher")
-let worker1 = System.create "cluster-system" (configWithPort 5001 "worker")
-let worker2 = System.create "cluster-system" (configWithPort 5002 "worker")
-
+let _worker1 = System.create "cluster-system" (configWithPort 5001 "worker")
+let _worker2 = System.create "cluster-system" (configWithPort 5002 "worker")
 // let worker3 = System.create "cluster-system" (configWithPort 5003 "worker")
 
 /// Domain
@@ -58,7 +57,6 @@ let sftpWorkerActor (mailbox:Actor<_>) (msg:SftpCommand) =
     | Upload (src, dest) -> logInfof mailbox "Upload from %s to %s on [%A]" src dest nodeAddress
     | Delete (dest) -> logInfof mailbox "Delete %s on [%A]" dest nodeAddress
     ignored ()
-
 
 let pool = spawn dispatcher "sftp" { props (actorOf2 sftpWorkerActor) with Router = Some (FromConfig.Instance :> RouterConfig) }
 

@@ -8,7 +8,7 @@ open Akkling
 let configWithPort (port:int) =
     let config = Configuration.parse ("""
         akka {
-          # loglevel = DEBUG
+          loglevel = DEBUG
           actor {
             provider = cluster
           }
@@ -27,5 +27,5 @@ let configWithPort (port:int) =
         """)
     config.WithFallback(ClusterSingletonManager.DefaultConfig())
 
-let system1 = System.create "cluster-system" (configWithPort 5000)
-let system2 = System.create "cluster-system" (configWithPort 5001)
+let _system1 = System.create "cluster-system" (configWithPort 5000)
+let _system2 = System.create "cluster-system" (configWithPort 5001)
