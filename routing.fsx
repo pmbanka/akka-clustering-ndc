@@ -1,4 +1,4 @@
-/// > .paket\paket.exe generate-load-scripts --group Main --framework net461 --type fsx
+// > .paket\paket.exe generate-load-scripts --group Main --framework net461 --type fsx
 #load @".paket/load/net461/main.group.fsx"
 
 open System
@@ -43,7 +43,7 @@ let configWithPort (port:int) (role:string) =
 let dispatcher = System.create "cluster-system" (configWithPort 5000 "dispatcher")
 let _worker1 = System.create "cluster-system" (configWithPort 5001 "worker")
 let _worker2 = System.create "cluster-system" (configWithPort 5002 "worker")
-// let worker3 = System.create "cluster-system" (configWithPort 5003 "worker")
+// let _worker3 = System.create "cluster-system" (configWithPort 5003 "worker")
 
 /// Domain
 type SftpCommand = 

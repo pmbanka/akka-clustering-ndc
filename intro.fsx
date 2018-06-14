@@ -1,14 +1,16 @@
-/// > .paket\paket.exe generate-load-scripts --group Main --framework net461 --type fsx
+// > .paket\paket.exe generate-load-scripts --group Main --framework net461 --type fsx
 #load @".paket/load/net461/main.group.fsx"
 
 open System
 open Akka.Cluster.Tools.Singleton
 open Akkling
+open Petabridge.Cmd.Host
+open Petabridge.Cmd.Cluster
 
 let configWithPort (port:int) =
     let config = Configuration.parse ("""
         akka {
-          loglevel = DEBUG
+          # loglevel = DEBUG
           actor {
             provider = cluster
           }
@@ -27,5 +29,9 @@ let configWithPort (port:int) =
         """)
     config.WithFallback(ClusterSingletonManager.DefaultConfig())
 
-let _system1 = System.create "cluster-system" (configWithPort 5000)
-let _system2 = System.create "cluster-system" (configWithPort 5001)
+let system1 = System.create "cluster-system" (configWithPort 5000)
+let system2 = System.create "cluster-system" (configWithPort 5001)
+
+// let cmd = PetabridgeCmd.Get(system1)
+// cmd.RegisterCommandPalette(ClusterCommands.Instance)
+// cmd.Start()

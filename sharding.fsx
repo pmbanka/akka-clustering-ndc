@@ -1,4 +1,4 @@
-/// > .paket\paket.exe generate-load-scripts --group Main --framework net461 --type fsx
+// > .paket\paket.exe generate-load-scripts --group Main --framework net461 --type fsx
 #load @".paket/load/net461/main.group.fsx"
 open Akkling.Cluster.Sharding
 open Akka.Actor
